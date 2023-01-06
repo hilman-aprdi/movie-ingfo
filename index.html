@@ -1,0 +1,228 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="rgb(87,92,223)">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find your favorite movie information here!"/>
+    <link rel="icon" type="image/x-icon" href="img/favicon.ico">
+    <link rel="stylesheet" href="style/movieStyle.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <title>MINGFO | Movie Ingfo</title>
+    <style type="text/css" media="all">
+      * {
+        box-sizing: border-box;
+      }
+      .keyword {
+        background: rgb(87,92,223);
+        padding: 5px 10px;
+        border-radius: 1rem;
+        cursor: pointer;
+      }
+      .keyword:empty {
+        display: none;
+      }
+      .keyword:hover {
+        background: darkgrey;
+      }
+      ::placeholder {
+        color: rgba(255,255,255,.4)!important;
+      }
+      
+      @media(min-width: 678px) {
+        .input  {
+          width: 38%!important;
+          border: 3px solid #fff;
+        }
+      }
+    </style>
+  <body class="dark" onscroll="onTop()">
+    
+    <!-- NAVIGATION -->
+    <nav class="navbar navbar-dark fixed-bottom p-2">
+      <div class="navbar-collapse d-flex align-items-center justify-content-between" id="navbarSupportedContent">
+        <h1 class="d-none d-md-block mx-5 fw-bold text-light">Mingfo</h1>
+        <ul class="navbar-nav w-100 mb-lg-0 d-flex flex-row justify-content-md-end justify-content-around">
+          <li class="nav-item mx-md-3">
+            <a class="nav-link active" aria-current="page" href="#;;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+              </svg>
+              <span class="d-none d-md-block">Home</span>
+            </a>
+          </li>
+          <li class="nav-item mx-md-3">
+            <a class="nav-link" href="discovery/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+              <span class="d-none d-md-block">Discovery</span>
+            </a>
+          </li>
+          <li class="nav-item mx-md-3">
+            <a class="nav-link" href="bookmarks/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+              </svg>
+              <span class="d-none d-md-block">Bookmarks</span>
+            </a>
+          </li>
+          <li class="nav-item ms-md-3 me-md-5">
+            <a class="nav-link" href="about/">
+                <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                  <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+                </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <!-- END NAVIGATION -->
+    
+    <div class="container-fluid text-light dark pb-5">
+      <!-- HEADER -->
+      <div class="row">
+        <div class="col-12 d-flex align-items-center justify-content-between pt-4 px-4 purple py-md-4" style="border">
+          <h1 class="d-md-none fw-bold">Mingfo</h1>
+          <p class="mt-2 m-md-auto">Good <span class="time"></span></p>
+        </div>
+        
+        <!-- MOVIE MODAL -->
+        <div class="modal fade p-0" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog text-light modal-fullscreen">
+            <div class="modal-content dark">
+              <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
+              <div class="modal-body m-0 p-0"> </div>
+              <div class="modal-footer border-0 d-flex justify-content-evenly fixed-bottom" style="backdrop-filter: blur(8px); background: rgba(0,0,0,0.2);">
+                <button type="button" class="btn bg-transparent fw-bold" data-bs-dismiss="modal" style="border: 2px solid lightgrey; color: lightgrey;">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                    <path d="M2.146 2.854a.5.5 #0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+                  </svg>
+                  <span onclick="stopVideos();">Close</span>
+                </button>
+                <button type="button" class="btn purple fw-bold text-light save">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                    <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+                  </svg>
+                  <span>Save</span>
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+        
+        <!-- LANDING PAGE -->
+        <div class="px-4 px-md-5 d-flex flex-column flex-md-row purple align-items-center justify-content-center" style="padding: 15vh 0;">
+          <div class="d-flex ms-md-3 flex-column align-items-center align-items-md-start">
+            <h1 class="display-2 fw-bolder text-center text-md-start">find your favorite movie information here!</h1>
+            <div class="input-group w-50 d-flex input align-items-center mt-3 mb-5" id="button-addon2" data-bs-toggle="modal" data-bs-target="#search">
+              <a class="search" onclick="getSearch()">
+                <button class="bg-transparent border-0 text-light ps-3" type="button" id="button-addon2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg>
+                </button>
+              </a>
+              <input type="text" class="search-mv border-0 form-control bg-transparent text-light fw-bold fs-5" placeholder="Search..." />
+            </div>
+          </div>
+          <img src="img/phone.png" width="80%"/>
+        </div>
+        
+        <!-- SEARCH MODAL  -->
+        <div class="modal fade p-0" id="search" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+          <div class="modal-dialog text-light modal-fullscreen">
+            <div class="modal-content bg-transparent">
+              <div class="modal-body m-0 p-0" style="backdrop-filter: blur(15px);">
+                <div class="col-md-10 m-auto pt-5 d-flex flex-column px-4 text-md-center">
+                  <div class="input-group input m-auto mb-3 align-items-center">
+                    <a class="search" onclick="getSearch()">
+                      <button class="bg-transparent border-0 text-light ps-3" type="button" id="button-addon2">
+                        <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                          <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                        </svg>
+                      </button>
+                    </a>
+                    <input type="text" class="search-mv border-0 form-control k-word bg-transparent text-light fw-bold fs-5 py-2" placeholder="Search movie..." onkeypress="getSearch()" />
+                    <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-funnel me-3" viewBox="0 0 16 16" style="transform: scale(1.5);">
+                      <path d="M1.5 1.5A.5.5 0 0 1 2 1h12a.5.5 0 0 1 .5.5v2a.5.5 0 0 1-.128.334L10 8.692V13.5a.5.5 0 0 1-.342.474l-3 1A.5.5 0 0 1 6 14.5V8.692L1.628 3.834A.5.5 0 0 1 1.5 3.5v-2zm1 .5v1.308l4.372 4.858A.5.5 0 0 1 7 8.5v5.306l2-.666V8.5a.5.5 0 0 1 .128-.334L13.5 3.308V2h-11z"/>
+                    </svg>
+                  </div>
+                  <div class="history row">
+                    <h5 class="my-3 text-center">History : </h5>
+                    <div class="keywords col-md-7 m-md-auto">
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <div class="modal-footer p-0 border-0">
+                <button type="button" class="btn btn-secondary fw-bold mx-auto w-100 border-0 bg-warning text-dark" data-bs-dismiss="modal">Close</button>
+              </div>
+              <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
+            </div>
+          </div>
+        </div>
+        
+        <div class="row search-result m-auto col-md-10 py-4 d-none"></div>
+        <div class="col-md-10 m-auto">
+          <div class="d-flex d-md-none mt-5 justify-content-between align-items-center">
+            <p class="m-0 slide mx-4">Slide <span class="display-4">→</span>
+            </p>
+            <button class="btn btnx btn-dark mx-4 text-light d-flex align-items-center">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+                <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z" />
+              </svg>
+            </button>
+          </div>
+          <h1 class="fw-bold mx-3 mt-5 mb-2 opacity-md-0">Trending on this week</h1>
+        </div>
+        
+        <!-- TRENDING MOVIES -->
+        <div class="col-md-10  m-auto overflow-scroll">
+          <div class="row trending flex-nowrap flex-md-wrap py-3">
+          </div>
+        </div>
+        
+        <!-- ACTION -->
+        <div class="col-md-10 m-auto">
+          <h1 class="fw-bold mx-3 mt-5 mb-2">Action</h1>
+        </div>
+        <div class="col-md-10 m-auto overflow-scroll">
+          <div class="row action flex-nowrap flex-md-wrap py-3">
+          </div>
+        </div>
+        
+        <!-- ANIMATION -->
+        <div class="col-md-10 m-auto">
+          <h1 class="fw-bold mx-3 mt-5 mb-2">Animation</h1>
+        </div>
+        <div class="col-md-10 m-auto overflow-scroll">
+          <div class="row animation flex-nowrap flex-md-wrap py-3">
+          </div>
+        </div>
+        
+        <!-- HOROR -->
+        <div class="col-md-10 m-auto">
+          <h1 class="fw-bold mx-3 mt-5 mb-2">Horor</h1>
+        </div>
+        <div class="col-md-10 m-auto overflow-scroll">
+          <div class="row horor flex-nowrap flex-md-wrap py-3">
+          </div>
+        </div>
+        
+
+        <div class="col-md-10 m-auto py-5 px-3 mb-3">
+          <p class="fs-5 py-4 text-center">Want to explore all genres? <a href="discovery/" class="fw-bold text-light">Click Me!</a> :3</p>
+        </div>
+        
+      </div>
+    </div>
+    
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="script/api.js"></script>
+    <script src="script/bookmarks.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>

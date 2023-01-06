@@ -1,0 +1,221 @@
+@import url('https://fonts.googleapis.com/css2?family=Poppins:wght@300&display=swap');
+
+:root {
+  --dark: #191a33;
+  --purple: #575cdf;
+}
+
+
+* {
+  font-family: 'Poppins';
+  transition: .3s;
+  box-sizing: border-box;
+  user-select: none;
+}
+
+.dark {
+  background: var(--dark)!important;
+}
+
+.purple {
+  background: var(--purple)!important;
+}
+
+.text-dark {
+  color: var(--dark)!important;
+}
+
+nav {
+  background: var(--purple)!important;
+  box-shadow: 0 -20px 30px rgba(87,92,223,.4);
+  backdrop-filter: blur(20px);
+  border-radius: 3rem 3rem 0 0;
+}
+
+.card {
+  width: 100%;
+}
+
+.card:hover {
+  transform: scale(.95) rotate(2deg);
+  outline: 1px solid #415bf6;
+}
+
+.card-img-top {
+  border-radius: .5rem;
+  width: 130%; height: 190px;
+  object-fit: cover;
+}
+
+.poster {
+  z-index: 0;
+}
+
+.poster-bg {
+  position: absolute;
+  left: 0;
+  top: 20px;
+  width: 100%;
+  height: 50vh;
+  z-index: -1;
+  filter: blur(20px);
+  opacity: .5;
+}
+
+.card .release {
+  background: #000;
+  opacity: .6;
+  padding-right: .65rem;
+  border-radius: 0 1rem 1rem 0;
+  position: absolute;
+  font-weight: bold;
+  font-size: .7rem;
+}
+
+.btn-blue {
+  background: var(--purple)!important;
+  box-shadow: 0 0 30px rgba(87,92,223,.7);
+}
+
+.input {
+  border: 1px solid #fff;
+  border-radius: 5rem;
+  overflow: hidden;
+}
+
+.input:hover {
+  border: 1px solid var(--purple);
+  box-shadow: 0 0 10px rgba(87,92,223,.6);
+  background: rgba(87,92,223,.2);
+}
+
+input:hover {
+  caret-color: var(--purple);
+  box-shadow: none!important;
+}
+
+iframe {
+  aspect-ratio: 16 / 9;
+  position: relative;
+  left: -7.5%;
+  width: 100vw;
+}
+
+.modal-body {
+  overflow-x: hidden;
+}
+
+.modal-body div .backdrop {
+  aspect-ratio: 16 / 9;
+  position: absolute;
+  width: 100%
+  margin: 0;
+}
+
+.modal-body div .poster {
+  width: 95%;
+  aspect-ratio: 11 / 16;
+  object-fit: cover;
+  transform: scale(.4);
+  position: relative;
+  bottom: 4rem;
+  padding: 0;
+  border-radius: 1rem;
+}
+
+.movie-details {
+  position: relative;
+  top: -16.5rem;
+}
+
+.b-btm {
+  display: inline-block;
+  margin-bottom: .3rem;
+}
+
+ul svg {
+  transform: scale(1.2);
+  color: #fff;
+}
+
+.absolute {
+  position: absolute;
+  z-index: 0;
+  opacity: .6;
+  transform: scale(2);
+  width: 100vw; height: 150vh;
+  filter: blur(100px);
+}
+
+.gnre {
+  cursor: pointer;
+}
+
+.gnre:active {
+  transform: scale(.95);
+}
+
+.gnre:hover {
+  opacity: .6;
+}
+
+.modal-footer button:hover{
+  background: lightgrey!important;
+  color: darkgrey!important;
+  border: none;
+}
+
+.modal-footer button:focus {
+  background: #26263e!important;
+  border: none;
+  color: #fff!important;
+}
+
+button.swal2-confirm.swal2-styled {
+  background: var(--purple)!important;
+}
+
+.swal2-modal {
+  display: grid;
+  place-content: center;
+  text-align: center;
+  background: transparent!important;
+  height: 100vh;
+  position: fixed!important;
+  width: 100vw!important;
+  backdrop-filter: blur(20px);
+}
+
+.pagination li a {
+  color: #fff!important;
+  background: var(--purple)!important;
+  border: 2px solid #191a33!important;
+}
+
+@media(min-width: 678px) {
+  .card:hover {
+    outline: 3px solid #415bf6;
+  }
+  
+  nav {
+    position: static!important;
+    top: 0;
+    border-radius: 0;
+ 
+  
+  .card-img-top {
+    height: 250px;
+  }
+  
+  .input {
+    width: 60%!important;
+  }
+  
+  .modal-body div .poster {
+    bottom: 8rem;
+  }
+  
+  .movie-details {
+    top: -36rem;
+  }
+}

@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <link rel="stylesheet" href="../style/movieStyle.css" type="text/css" media="all" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find your favorite movie  information here!"/>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.png">
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link href="https://cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <title>Mingfo | Discovery</title>
+    <style type="text/css" media="all">
+      .gnre {
+        width: 47.5%!important;
+      }
+      
+      .fullWidth {
+        width: 100%!important;
+        text-align: center!important;
+        font-size: 1.3rem;
+        transform: rotate(360deg);
+      }
+      
+      .back {
+        width: max-content;
+        transform: translateX(-4.5vw);
+        margin-top: 40vh;
+      }
+      
+      .btnx {
+        position: relative!important;
+        right: 0;
+      } 
+      
+      @media(min-width: 678px) {
+        .gnre, .fullWidth {
+          width: 31.5%!important;
+          font-size: 1.7rem;
+        }
+        
+        .back {
+          transform: translateX(90vw) scale(2);
+          margin-top: 15vw;
+        }
+        
+        .dscvr {
+          width: 35%;
+        }
+      }
+    </style>
+  </head>
+  <body class="dark">
+  <nav class="navbar navbar-dark fixed-bottom p-2">
+    <div class="navbar-collapse d-flex align-items-center justify-content-between" id="navbarSupportedContent">
+      <h1 class="d-none d-md-block mx-5 fw-bold text-light">Mingfo</h1>
+      <ul class="navbar-nav w-100 mb-lg-0 d-flex flex-row justify-content-md-end justify-content-around">
+        <li class="nav-item mx-md-3">
+          <a class="nav-link" aria-current="page" href="../">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-house-door-fill" viewBox="0 0 16 16">
+              <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+            </svg>
+            <span class="d-none d-md-block">Home</span>
+          </a>
+        </li>
+        <li class="nav-item mx-md-3 bg">
+          <a class="nav-link active" href="#">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-search" viewBox="0 0 16 16">
+              <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+            </svg>
+            <span class="d-none d-md-block">Discovery</span>
+          </a>
+        </li>
+        <li class="nav-item mx-md-3">
+          <a class="nav-link" href="../bookmarks/">
+            <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+              <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+            </svg>
+          <span class="d-none d-md-block">Bookmarks</span>
+          </a>
+        </li>
+        <li class="nav-item ms-md-3 me-md-5">
+            <a class="nav-link" href="../about/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+              </svg>
+            </a>
+        </li>
+      </ul>
+    </div>
+  </nav>
+
+    <div class="modal fade p-0" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog text-light modal-fullscreen">
+        <div class="modal-content dark">
+          <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
+          <div class="modal-body m-0 p-0"> </div>
+          <div class="modal-footer border-0 d-flex justify-content-evenly fixed-bottom" style="backdrop-filter: blur(8px); background: rgba(0,0,0,0.2);">
+            <button type="button" class="btn bg-transparent fw-bold" data-bs-dismiss="modal" style="border: 2px solid lightgrey; color: lightgrey;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+              <span>Close</span>
+            </button>
+            <button type="button" class="btn purple fw-bold text-light pt-2 px-3 save">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+              </svg>
+              <span>Save</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <button class="back purple border-0 fixed-top d-none mx-4 btn btn-dark">
+       <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-box-arrow-left fw-bold" viewBox="0 0 16 16">
+          <path fill-rule="evenodd" d="M6 12.5a.5.5 0 0 0 .5.5h8a.5.5 0 0 0 .5-.5v-9a.5.5 0 0 0-.5-.5h-8a.5.5 0 0 0-.5.5v2a.5.5 0 0 1-1 0v-2A1.5 1.5 0 0 1 6.5 2h8A1.5 1.5 0 0 1 16 3.5v9a1.5 1.5 0 0 1-1.5 1.5h-8A1.5 1.5 0 0 1 5 12.5v-2a.5.5 0 0 1 1 0v2z"/>
+          <path fill-rule="evenodd" d="M.146 8.354a.5.5 0 0 1 0-.708l3-3a.5.5 0 1 1 .708.708L1.707 7.5H10.5a.5.5 0 0 1 0 1H1.707l2.147 2.146a.5.5 0 0 1-.708.708l-3-3z"/>
+          </svg>
+     </button>
+            
+    <div class="d-flex flex-column flex-md-row justify-content-md-center mt-5 pt-md-5">
+      <h1 class="fw-bold mx-4 mx-md-0 text-light">Discovery</h1>
+      <div class="dscvr mt-4 mt-md-0 px-4">
+             <div class="input-group w-100 input m-auto mb-3 align-items-center">
+              <a class="search" onclick="getSearch()">
+                <button class="bg-transparent border-0 text-light ps-3" type="button" id="button-addon2">
+                  <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" fill="currentColor" class="bi bi-search" viewBox="0 0 16 16">
+                    <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z" />
+                  </svg>
+                </button>
+              </a>
+              <input type="text" class="search-mv border-0 form-control k-word bg-transparent text-light fw-bold fs-5 py-2" placeholder="Search..." onkeypress="getSearch()" />
+            </div>
+      </div>
+    </div>
+    
+    
+    
+    <div class="container-fluid my-3 px-md-5">
+      <div class="d-flex flex-row align-items-center justify-content-between justify-content-md-center">
+        <h3 class="fw-bold mx-4 my-4 text-light gs">Genres 🔖</h3>
+         <button class="btn btnx btn-dark mx-4 text-light d-flex align-items-center d-md-none">
+           <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-grid-fill" viewBox="0 0 16 16">
+             <path d="M1 2.5A1.5 1.5 0 0 1 2.5 1h3A1.5 1.5 0 0 1 7 2.5v3A1.5 1.5 0 0 1 5.5 7h-3A1.5 1.5 0 0 1 1 5.5v-3zm8 0A1.5 1.5 0 0 1 10.5 1h3A1.5 1.5 0 0 1 15 2.5v3A1.5 1.5 0 0 1 13.5 7h-3A1.5 1.5 0 0 1 9 5.5v-3zm-8 8A1.5 1.5 0 0 1 2.5 9h3A1.5 1.5 0 0 1 7 10.5v3A1.5 1.5 0 0 1 5.5 15h-3A1.5 1.5 0 0 1 1 13.5v-3zm8 0A1.5 1.5 0 0 1 10.5 9h3a1.5 1.5 0 0 1 1.5 1.5v3a1.5 1.5 0 0 1-1.5 1.5h-3A1.5 1.5 0 0 1 9 13.5v-3z" />
+           </svg>
+        </button>
+      </div>
+      <div class="row discovery pb-5 g-3 g-md-4 mx-2 justify-content-between"></div>
+      <h3 class="key text-light text-center"><b class="d-none"></b></h3>
+    </div>
+    
+    <div class="row search-result px-md-5 mx-md-5 m-auto py-4 text-light d-flex mb-5"></div>
+    <div class="pagination m-auto pb-5 d-none mb-3 d-flex justify-content-center"></div>
+      
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="../script/api.js" type="text/javascript" charset="utf-8"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11/dist/sweetalert2.min.js"></script>
+    <script src="../script/bookmarks.js" type="text/javascript" charset="utf-8"></script>
+    <script src="discovery.js"></script>
+  </body>
+</html>

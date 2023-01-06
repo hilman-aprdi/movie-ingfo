@@ -1,0 +1,125 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta http-equiv="content-type" content="text/html; charset=utf-8" />
+    <meta name="theme-color" content="rgb(87,92,223)">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="Find your favorite movie information here!"/>
+    <link rel="icon" type="image/x-icon" href="../img/favicon.ico">
+    <link rel="stylesheet" href="../style/movieStyle.css" type="text/css" media="all" />
+    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/css/bootstrap.min.css" />
+    <link href="https//cdn.jsdelivr.net/npm/@sweetalert2/theme-dark@4/dark.css" rel="stylesheet">
+    <title>MINGFO | Search Result</title>
+    <style type="text/css" media="all">
+      .swal2-modal {
+        background: transparent!important;
+        height: 100vh;
+        position: fixed!important;
+        width: 100vw!important;
+        backdrop-filter: blur(20px);
+      }
+    </style>
+  </head>
+  <body class="dark">
+    <nav class="navbar navbar-dark fixed-bottom p-2">
+      <div class="navbar-collapse d-flex align-items-center justify-content-between" id="navbarSupportedContent">
+        <h1 class="d-none d-md-block mx-5 fw-bold text-light">Mingfo</h1>
+        <ul class="navbar-nav w-100 mb-lg-0 d-flex flex-row justify-content-md-end justify-content-around align-items-center">
+          <li class="nav-item mx-md-3">
+            <a class="nav-link" aria-current="page" href="../index.html">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-house-door-fill" viewBox="0 0 16 16">
+                <path d="M6.5 14.5v-3.505c0-.245.25-.495.5-.495h2c.25 0 .5.25.5.5v3.5a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5v-7a.5.5 0 0 0-.146-.354L13 5.793V2.5a.5.5 0 0 0-.5-.5h-1a.5.5 0 0 0-.5.5v1.293L8.354 1.146a.5.5 0 0 0-.708 0l-6 6A.5.5 0 0 0 1.5 7.5v7a.5.5 0 0 0 .5.5h4a.5.5 0 0 0 .5-.5z"/>
+              </svg>
+              <span class="d-none d-md-block">Home</span>
+            </a>
+          </li>
+          <li class="nav-item mx-md-3">
+            <a class="nav-link active" href="../discovery/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-search" viewBox="0 0 16 16">
+                <path d="M11.742 10.344a6.5 6.5 0 1 0-1.397 1.398h-.001c.03.04.062.078.098.115l3.85 3.85a1 1 0 0 0 1.415-1.414l-3.85-3.85a1.007 1.007 0 0 0-.115-.1zM12 6.5a5.5 5.5 0 1 1-11 0 5.5 5.5 0 0 1 11 0z"/>
+              </svg>
+              <span class="d-none d-md-block">Discovery</span>
+            </a>
+          </li>
+          <li class="nav-item mx-md-3">
+            <a class="nav-link" href="../bookmarks/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="d-md-none bi bi-bookmark-heart-fill" viewBox="0 0 16 16">
+                <path d="M2 15.5a.5.5 0 0 0 .74.439L8 13.069l5.26 2.87A.5.5 0 0 0 14 15.5V2a2 2 0 0 0-2-2H4a2 2 0 0 0-2 2v13.5zM8 4.41c1.387-1.425 4.854 1.07 0 4.277C3.146 5.48 6.613 2.986 8 4.412z"/>
+              </svg>
+              <span class="d-none d-md-block">Bookmarks</span>
+            </a>
+          </li>
+          <li class="nav-item ms-md-3 me-md-5">
+            <a href="../about/">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-info-circle-fill" viewBox="0 0 16 16">
+                <path d="M8 16A8 8 0 1 0 8 0a8 8 0 0 0 0 16zm.93-9.412-1 4.705c-.07.34.029.533.304.533.194 0 .487-.07.686-.246l-.088.416c-.287.346-.92.598-1.465.598-.703 0-1.002-.422-.808-1.319l.738-3.468c.064-.293.006-.399-.287-.47l-.451-.081.082-.381 2.29-.287zM8 5.5a1 1 0 1 1 0-2 1 1 0 0 1 0 2z"/>
+              </svg>
+            </a>
+          </li>
+        </ul>
+      </div>
+    </nav>
+    <button class="btn btn-danger" onclick="history.back()">Back</button>
+    <div class="modal fade p-0" id="staticBackdrop" data-bs-backdrop="static" data-bs-keyboard="false" tabindex="-1" aria-labelledby="staticBackdropLabel" aria-hidden="true">
+      <div class="modal-dialog text-light modal-fullscreen">
+        <div class="modal-content dark">
+          <button type="button" class="btn btn-secondary d-none" data-bs-dismiss="modal">Close</button>
+          <div class="modal-body m-0 p-0"> </div>
+          <div class="modal-footer border-0 d-flex justify-content-evenly fixed-bottom" style="backdrop-filter: blur(8px); background: rgba(0,0,0,0.2);">
+            <button type="button" class="btn bg-transparent fw-bold" data-bs-dismiss="modal" style="border: 2px solid lightgrey; color: lightgrey;">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-x-lg" viewBox="0 0 16 16">
+                <path d="M2.146 2.854a.5.5 0 1 1 .708-.708L8 7.293l5.146-5.147a.5.5 0 0 1 .708.708L8.707 8l5.147 5.146a.5.5 0 0 1-.708.708L8 8.707l-5.146 5.147a.5.5 0 0 1-.708-.708L7.293 8 2.146 2.854Z"/>
+              </svg>
+              <span>Close</span>
+            </button>
+            <button type="button" class="btn purple fw-bold text-light pt-2 px-3 save">
+              <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-heart" viewBox="0 0 16 16">
+                <path d="m8 2.748-.717-.737C5.6.281 2.514.878 1.4 3.053c-.523 1.023-.641 2.5.314 4.385.92 1.815 2.834 3.989 6.286 6.357 3.452-2.368 5.365-4.542 6.286-6.357.955-1.886.838-3.362.314-4.385C13.486.878 10.4.28 8.717 2.01L8 2.748zM8 15C-7.333 4.868 3.279-3.04 7.824 1.143c.06.055.119.112.176.171a3.12 3.12 0 0 1 .176-.17C12.72-3.042 23.333 4.867 8 15z"/>
+              </svg>
+              <span>Save</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+    <p class="key text-light fs-5 pt-5 pb-2 text-center"></p>
+    <div class="row search-result text-light m-auto col-md-10 pt-5"></div>
+    <div class="pagination m-auto pb-5 mb-3 d-flex justify-content-center"></div>
+ 
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.2/dist/js/bootstrap.min.js" integrity="sha384-IDwe1+LCz02ROU9k972gdyvl+AESN10+x7tBKgc9I5HFtuNz0wWnPclzo6p9vxnk" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/sweetalert2@10.10.1/dist/sweetalert2.all.min.js"></script>
+    <script src="../script/api.js" charset="utf-8"></script>
+    <script src="../script/bookmarks.js" charset="utf-8"></script>
+    <script type="text/javascript" charset="utf-8">
+    
+      const x = JSON.parse(localStorage.getItem("cards")),
+            result = JSON.parse(localStorage.getItem("cards")),
+            keyw = document.querySelector(".key");
+      console.log(x,result)
+      console.log("hallo")
+      
+      searchRes.innerHTML = x.movies.join('');
+      keyw.innerHTML = result.res + "<br> Total movies : " + result.total;
+      
+      const crds = document.querySelectorAll(".cardx");
+      crds.forEach(i => i.classList.remove("w-100"));
+      
+     let total = JSON.parse(localStorage.getItem("pagesRes")),
+         totalPages = total[0];
+      pagination(totalPages);
+      modal();
+      
+    pages.addEventListener("click", e => {
+      if(e.target.classList.contains("next")) {
+        pages.innerHTML = pagination(--totalPages);
+      }
+      if(e.target.classList.contains("prev")) {
+        pages.innerHTML = pagination(++totalPages);
+      }
+  })
+      
+      
+      
+    </script>
+  </body>
+</html>
