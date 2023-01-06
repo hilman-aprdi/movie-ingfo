@@ -25,7 +25,7 @@ function now() {
 }
 time.innerText = now();   
 
-/*
+
 // fetching film dengan genre action, animasi & horor
 const getMovies = url => fetch(url).then(res => res.json());
 Promise.all([
