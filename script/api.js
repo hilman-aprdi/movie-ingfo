@@ -88,16 +88,16 @@ async function showMovies(data, gnre, mvs) {
   };
   localStorage.setItem("cards", JSON.stringify(carsds));
   
-  let currentUrl = "http://localhost:8158/discovery/index.html#";
+  let currentUrl = "https://mingfo.my.id/discovery/#";
   alert(document.URL);
   if(document.URL == currentUrl) {
     gnre.innerHTML = result.join("");
   } else {
-    fetch("discovery/index.html")
+    fetch("https://mingfo.my.id/discovery/")
     .then(res => {
       res.status == 404 ?
-      location.replace("../searchResult/index.html"):
-      location.replace("searchResult/index.html");
+      location.replace("../searchResult/"):
+      location.replace("searchResult/");
     });
   }
   
@@ -215,10 +215,10 @@ let num = 1;
 async function nextPage(query, up, id) {
   up == 0 ? num-- : num++;
   let page = `&page=${num}`,
-      dscvryUrl = "http://localhost:8158/discovery/index.html", result,
+      dscvryUrl = "https://mingfo.my.id/discovery/", result,
       currentUrl = document.URL;
  console.log(page);
-  currentUrl == dscvryUrl || currentUrl == 'http://localhost:8158/discovery/index.html#' ?
+  currentUrl == dscvryUrl || currentUrl == 'https://mingfo.my.id/discovery/#' ?
       result = await fetch(DISCOVER_URL + '&with_genres=' + id + page)
                  .then(res => res.json()) :
       result = await fetch(SEARCH_URL + query + page)
