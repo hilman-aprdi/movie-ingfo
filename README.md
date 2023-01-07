@@ -7,3 +7,4 @@ A simple website that provides information about movies
   - Bootstrap
 - JavaScript
   - SweetAlert
+For the API, I use API from [TMDB](tmdb.org)
