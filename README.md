@@ -4,6 +4,6 @@ A simple website that provides information about movies
 Language / Tools used :
 - HTML
 - CSS
--- Bootstrap
+``` - (Bootstrap)
 - JavaScript
--- SweetAlert
+``` - SweetAlert
