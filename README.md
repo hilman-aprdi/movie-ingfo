@@ -1,3 +1,4 @@
+![mingfo preview](img/preview.jpg)
 # movie-ingfo
 A simple website that provides information about movies
 - [x] Trailer
