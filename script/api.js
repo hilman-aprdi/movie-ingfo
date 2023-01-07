@@ -89,7 +89,6 @@ async function showMovies(data, gnre, mvs) {
   localStorage.setItem("cards", JSON.stringify(carsds));
   
   let currentUrl = "https://mingfo.my.id/discovery/#";
-  alert(document.URL);
   if(document.URL == currentUrl) {
     gnre.innerHTML = result.join("");
   } else {
