@@ -19,7 +19,7 @@ function now() {
    const date = new Date(),
          hours = date.getHours();
    if (hours > 17 || hours >= 0) waktu = "Evening 🌙";
-   if (hours > 4 && hours <= 11) waktu = "Morning ☀️";
+   if (hours > 4 && hours <= 10) waktu = "Morning ☀️";
    if (hours > 11 && hours <= 17) waktu = "Afternoon ☀️";
    return waktu;
 }
