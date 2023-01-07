@@ -2,7 +2,10 @@
 A simple website that provides information about movies
 - [x] Trailer
 - [x] Clip
- 
+- [x] Overview
+- [x] Save & Delete
+- [x] Sort by- 
+
 ## languages / tools used :
 - HTML
 - CSS
