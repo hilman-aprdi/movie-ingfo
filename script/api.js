@@ -96,7 +96,7 @@ async function showMovies(data, gnre, mvs) {
     .then(res => {
       res.status == 404 ?
       location.replace("https://mingfo.my.id/searchResult/"):
-      location.replace("searchResult/");
+      location.replace("../searchResult/");
     });
   }
   
