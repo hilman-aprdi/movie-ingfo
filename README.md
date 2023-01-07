@@ -1,5 +1,5 @@
-![mingfo preview](img/preview.jpg)
 # movie-ingfo
+![mingfo preview](img/preview.jpg)
 A simple website that provides information about movies
 - [x] Trailer
 - [x] Clip
