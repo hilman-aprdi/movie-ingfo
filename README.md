@@ -1,6 +1,8 @@
 # movie-ingfo
 A simple website that provides information about movies
-
+- [x] Trailer
+- [x] Clip
+ 
 ## languages / tools used :
 - HTML
 - CSS
