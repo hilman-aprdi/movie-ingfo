@@ -183,7 +183,7 @@ function modal() {
                      <br>${genres.join(", ")}
                   </div>
                   <div class="col-6 text-center text-md-start col-md-2 offset-md-1">
-                     <span class="fw-bolder b-btm fs-5">IMDb</span>
+                     <span class="fw-bolder b-btm fs-5">User Scores</span>
                      <br>⭐${details.vote_average.toFixed(1)}/10
                   </div>
                   <div class="col-6 text-center text-md-start col-md-3">
